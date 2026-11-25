@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model DrinkQueue {
+  id           Int      @id @default(autoincrement())
+  queueNumber  Int
+  customerName String
+  drinkName    String
+  qty          Int      @default(1)
+  status       String   @default("waiting")
+  createdAt    DateTime @default(now())
+}
